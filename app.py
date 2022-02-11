@@ -3,8 +3,8 @@ from flask import Flask, render_template, request, jsonify
 import urllib.request
 import json
 
-#client_id = "rxXWyInAvJhkCWIfPUg2"
-#client_secret = "JXjWT_Zbeg"
+client_id = "발급받은 값을 입력하세요"
+client_secret = "발급받은 값을 입력하세요"
 
 app = Flask(__name__)
 
@@ -32,8 +32,8 @@ def do_papago():
         api_request = urllib.request.Request(url)
 
         # HTTP 요청 헤더(Request header)에 클라이언트 아이디와 클라이언트 시크릿 추가.
-        api_request.add_header("X-Naver-Client-Id","rxXWyInAvJhkCWIfPUg2")
-        api_request.add_header("X-Naver-Client-Secret","JXjWT_Zbeg")
+        api_request.add_header("X-Naver-Client-Id",client_id)
+        api_request.add_header("X-Naver-Client-Secret",client_secret)
 
 
         # 번역 API 응답(HTTP Response) - HTTP 요청에 따른 응답.
@@ -69,8 +69,8 @@ def neural_machine_translation(text):
     request = urllib.request.Request(ntm_url)
 
     # HTTP 요청 헤더(Request header)에 클라이언트 아이디와 클라이언트 시크릿 추가.
-    request.add_header("X-Naver-Client-Id","rxXWyInAvJhkCWIfPUg2")
-    request.add_header("X-Naver-Client-Secret","JXjWT_Zbeg")
+    request.add_header("X-Naver-Client-Id",client_id)
+    request.add_header("X-Naver-Client-Secret",client_secret)
 
     # 언어 감지 API 응답(HTTP Response) - HTTP 요청에 따른 응답.
     response = urllib.request.urlopen(request, data=data.encode("utf-8"))
